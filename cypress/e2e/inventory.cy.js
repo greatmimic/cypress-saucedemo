@@ -56,6 +56,7 @@ describe('Inventory tests', () => {
         })
         .then((prices) => {
             return prices.map((price) => {
+                // strip '$'
                 const stripped = price.slice(1)
                 return parseFloat(stripped)
             })
@@ -75,6 +76,7 @@ describe('Inventory tests', () => {
         })
         .then((prices) => {
             return prices.map((price) => {
+                // strip '$'
                 const stripped = price.slice(1)
                 return parseFloat(stripped)
             })
