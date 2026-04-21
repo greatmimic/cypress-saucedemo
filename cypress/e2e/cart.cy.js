@@ -24,7 +24,7 @@ describe('Cart function tests', () => {
         })
     })
 
-    it.only('Check if removing an item in the cart removes the item from the cart page', () => {
+    it('Check if removing an item in the cart removes the item from the cart page', () => {
         // scope button click within parent item to avoid index shifting
         // caused by "Add to Cart" mutating to "Remove" after click
         cy.get('[data-test="inventory-item"]').eq(0).within(() => {
@@ -35,10 +35,16 @@ describe('Cart function tests', () => {
         })
 
         cy.get('[data-test="shopping-cart-link"]').click()
+        // remove first of the item list and check if length = 1
         cy.get('[data-test="inventory-item"]').eq(0).within(() => {
             cy.get('[data-test^="remove"]').click()
         })
         cy.get('[data-test="inventory-item"]').should('have.length', 1)
+        // check if length = 0 after removing all items, since list becomes the length of 1, get index 0 again
+        cy.get('[data-test="inventory-item"]').eq(0).within(() => {
+            cy.get('[data-test^="remove"]').click()
+        })
+        cy.get('[data-test="inventory-item"]').should('have.length', 0)
     })
 
 })

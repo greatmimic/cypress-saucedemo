@@ -79,3 +79,17 @@ cypress/
 | Reset app state clears cart | Functional |
  
 ---
+
+## Known Bugs
+
+### Empty cart checkout
+- **Expected**: User should be blocked from checking out with an empty cart
+- **Actual**: Order completes successfully with no items
+- **Test**: `checkout.cy.js` — "Test if checkout is possible with no items"
+- **Status**: Failing (intentional)
+
+### Invalid input in customer info field
+- **Expected**: User should be blocked from checking out with invalid input
+- **Actual**: Order completes successfully with invalid customer info
+- **Test**: `checkout.cy.js` — "Test if valid input is required per field on checkout"
+- **Status**: Failing (intentional)

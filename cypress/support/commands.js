@@ -30,3 +30,12 @@ Cypress.Commands.add('login', (email, password) => {
     cy.get('[data-test="password"]').type(password)
     cy.get('[data-test="login-button"]').click()
  })
+
+Cypress.Commands.add('checkout', (firstName, lastName, postalCode) => {
+    cy.get('[data-test="shopping-cart-link"]').click()
+    cy.get('[data-test="checkout"]').click()
+    cy.get('[data-test="firstName"]').type(firstName)
+    cy.get('[data-test="lastName"]').type(lastName)
+    cy.get('[data-test="postalCode"]').type(postalCode)
+    cy.get('[data-test="continue"]').click()
+})
